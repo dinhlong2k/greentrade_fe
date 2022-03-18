@@ -1,0 +1,70 @@
+<div  class="container">
+    <h1 class="text-center"> {{title}} </h1>
+  </div>
+  <div class="container">
+  </div>
+  <button type="button" class="btn btn-success"
+      mat-button
+      [routerLink]="['']"
+      [routerLinkActive]="'active-link'"
+    >Add new Bank</button>
+  <table class = "table table-striped">
+      <thead>
+          <tr>
+              <th> Hành động</th>
+              <th> Mã ngân hàng</th>
+              <th> Tên đầy đủ </th>
+              <th> Tên viết tắt</th>
+              <th> Ghi chú </th>
+              <th> Người tạo </th>
+              <th> Thời gian taọ </th>
+              <th> Người sửa</th>
+              <th> Thời gian sửa</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor = "let mstbank of mstbanks" >
+            <td class="overflow-hidden">
+                <div ngbDropdown container="body">
+                  <button class="btn btn-success btn-sm" ngbDropdownToggle>Hành Động</button>
+                  <div ngbDropdownMenu>
+                    <button ngbDropdownItem>Sửa</button>
+                    <div class="dropdown-divider"></div>
+                    <button (click) = "deleteMstbank(mstbank)" ngbDropdownItem>Xóa</button>
+                  </div>
+                </div>
+              </td>
+              <td> {{ mstbank.bankCode }} </td>
+              <td> {{ mstbank.bankName }} </td>
+              <td> {{ mstbank.banksName }} </td>
+              <td> {{ mstbank.remarks }} </td>
+              <td> {{ mstbank.createdUserId }} </td>
+              <td> {{ mstbank.createdTime }} </td>
+              <td> {{ mstbank.updatedUserId }} </td>
+              <td> {{ mstbank.updatedTime }} </td>
+          </tr>
+      </tbody>
+  </table>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
