@@ -10,6 +10,8 @@ import { MstbankService } from '../mstbank.service';
 })
 export class CreateMstbankComponent implements OnInit {
 
+  mstbank: any = {} as MstBank;
+
   constructor(private mstbankService: MstbankService,
     private router: Router) {
     }
@@ -17,21 +19,21 @@ export class CreateMstbankComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // saveEmployee(){
-  //   this.mstbankService.createEmployee(this.employee).subscribe( data =>{
-  //     console.log(data);
-  //     this.goToEmployeeList();
-  //   },
-  //   error => console.log(error));
-  // }
+  saveMstBank(){
+    this.mstbankService.createMstBank(this.mstbank).subscribe( data =>{
+      console.log(data);
+    },
+    error => console.log(error));
+  }
 
-  // goToEmployeeList(){
-  //   this.router.navigate(['/employees']);
-  // }
+  goToEmployeeList(){
+    this.router.navigate(['/mstbank']);
+  }
 
-  // onSubmit(){
-  //   console.log(this.employee);
-  //   this.saveEmployee();
-  // }
+  onSubmit(){
+    console.log(this.mstbank);
+    this.goToEmployeeList();
+    this.saveMstBank();
+  }
 
 }

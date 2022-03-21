@@ -1,1 +1,56 @@
-<p>mstbank-update works!</p>
+<div class="col-md-6 offset-md-3">
+  <h3> Update Employee </h3>
+  <form (ngSubmit) = "onSubmit()">
+
+      <div class="form-group">
+          <label> Mã ngân hàng</label>
+          <input type="text" class ="form-control" id = "bankCode"
+              [(ngModel)] = "mstbank.bankCode" name = "bankCode">
+      </div>
+
+      <div class="form-group">
+          <label> Tên viết tắt</label>
+          <input type="text" class ="form-control" id = "bankName"
+              [(ngModel)] = "mstbank.bankName" name = "bankName">
+      </div>
+
+      <div class="form-group">
+          <label> Tên đầy đủ</label>
+          <input type="text" class ="form-control" id = "banksName"
+              [(ngModel)] = "mstbank.banksName" name = "banksName">
+      </div>
+
+      <div class="form-group">
+        <label> Ghi chú</label>
+        <input type="text" class ="form-control" id = "remarks"
+            [(ngModel)] = "mstbank.remarks" name = "remarks">
+      </div>
+
+      <div class="form-group">
+        <label> Người tạo</label>
+        <input type="text" class ="form-control" id = "createdUserId"
+            [(ngModel)] = "mstbank.createdUserId" name = "createdUserId">
+      </div>
+
+      <div class="form-group">
+        <label> Thời gian tạo</label>
+        <input type="text" class ="form-control" id = "createdTime"
+            [(ngModel)] = "mstbank.createdTime" name = "createdTime">
+      </div>
+
+      <div class="form-group">
+        <label> Người cập nhật</label>
+        <input type="text" class ="form-control" id = "updatedUserId"
+            [(ngModel)] = "mstbank.updatedUserId" name = "updatedUserId">
+      </div>
+
+      <div class="form-group">
+        <label> Thời gian cập nhật</label>
+        <input type="text" class ="form-control" id = "updatedTime"
+            [(ngModel)] = "mstbank.updatedTime" name = "updatedTime">
+      </div>
+
+      <button class = "btn btn-success" type ="submit">Submit</button>
+
+  </form>
+  </div>

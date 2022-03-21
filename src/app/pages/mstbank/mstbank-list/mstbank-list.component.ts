@@ -10,6 +10,7 @@ import { MstbankService } from '../mstbank.service';
 })
 export class MstbankListComponent implements OnInit, AfterViewInit {
   query = {};
+  mstbank: MstBank = {} as MstBank;
   mstbanks: MstBank[] = [];
   title ="Ngân hàng";
 
@@ -31,15 +32,20 @@ export class MstbankListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getMstBank(bankCode: string){
-    this.router.navigate(['get-mstbank', bankCode]);
+  getMstBank(mstbank: any){
+    //this.router.navigate(['update-mstbank', mstbank]);
+    this.mstbankService.getMstBankByBankCode(mstbank).subscribe( data => {
+      console.log(data.data);
+      this.mstbank=data.data;
+    })
+    this.router.navigate(['update-mstbank', mstbank]);
   }
 
-  updateMstBank(bankCode: string){
-    this.router.navigate(['update-mstbank', bankCode]);
+  updateMstBank(mstbank: any){
+    this.router.navigate(['mst-update', mstbank]);
   }
 
-  deleteMstbank(mstbank: MstBank){
+  deleteMstbank(mstbank: any){
     this.mstbankService.deleteMstBank(mstbank).subscribe( data => {
       console.log(data);
       this.getListMstBank();

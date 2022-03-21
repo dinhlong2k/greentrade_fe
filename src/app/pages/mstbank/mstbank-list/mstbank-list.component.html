@@ -5,7 +5,7 @@
   </div>
   <button type="button" class="btn btn-success"
       mat-button
-      [routerLink]="['']"
+      [routerLink]="['/create-mstbank']"
       [routerLinkActive]="'active-link'"
     >Add new Bank</button>
   <table class = "table table-striped">
@@ -28,7 +28,7 @@
                 <div ngbDropdown container="body">
                   <button class="btn btn-success btn-sm" ngbDropdownToggle>Hành Động</button>
                   <div ngbDropdownMenu>
-                    <button ngbDropdownItem>Sửa</button>
+                    <button (click) = "getMstBank(mstbank)" ngbDropdownItem>Sửa</button>
                     <div class="dropdown-divider"></div>
                     <button (click) = "deleteMstbank(mstbank)" ngbDropdownItem>Xóa</button>
                   </div>
@@ -45,26 +45,4 @@
           </tr>
       </tbody>
   </table>
-
-
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
-  </ng-template>
   

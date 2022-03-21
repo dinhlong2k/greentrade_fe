@@ -20,14 +20,22 @@ export class MstbankService {
   }
 
   getMstBankList(query: {}): Observable<any>{
-    return this.http.post(`${this.baseURL}mstbank/getetst`, query);
+    return this.http.post(`${this.baseURL}mstbank/getestpage`, query);
   }
 
-  getMstBankByBankCode(query: {}): Observable<any>{
-    return this.http.post(`${this.baseURL}mstbank/getMstbank`,query);
+  getMstBankByBankCode(mstbank: any): Observable<any>{
+    return this.http.post<Response>(`${this.baseURL}mstbank/getMstbank`,mstbank);
   }
 
-  deleteMstBank(mstbank: MstBank) : Observable<any>{
+  deleteMstBank(mstbank: any) : Observable<any>{
     return this.http.post(`${this.baseURL}mstbank/delete`,mstbank);
+  }
+
+  createMstBank(mstbank: MstBank): Observable<any>{
+    return this.http.post(`${this.baseURL}mstbank/insert`, mstbank);
+  }
+
+  updateMstBank(mstbank: any): Observable<any>{
+    return this.http.post(`${this.baseURL}mstbank/update`, mstbank);
   }
 }
